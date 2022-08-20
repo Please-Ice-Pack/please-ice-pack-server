@@ -41,7 +41,7 @@ class JasyptConfigTest {
 
     @Test
     void testForEncryption() {
-        String source = "jdbc:mysql://localhost:3306/pip?serverTimezone=Asia/Seoul&characterEncoding=UTF-8";
+        String source = "string want to encrypt";
         String encrypted = encryptor.encrypt(source);
         System.out.println("source: " + source);
         System.out.println("encrypted: " + encrypted);

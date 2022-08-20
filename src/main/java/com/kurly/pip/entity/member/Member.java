@@ -25,4 +25,14 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(10) not null")
     Role role;
+
+    public static Member of(String identification, String password, Role role) {
+        return new Member(identification, password, role);
+    }
+
+    private Member(String identification, String password, Role role) {
+        this.identification = identification;
+        this.password = password;
+        this.role = role;
+    }
 }

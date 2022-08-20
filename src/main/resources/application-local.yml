@@ -11,3 +11,5 @@ spring:
         show_sql: true
     hibernate:
       ddl-auto: update
+jwt:
+  secretKey: ENC(ZQQ/q7MmzM2fgXhr2oFcgnRlnETS+jEWBgcSRD1xx50HFYrF+wVuMpu/6bj4QsN5)
