@@ -17,7 +17,9 @@ public enum ResultCode {
 
     NOT_FOUND(404, "대상이 존재하지 않습니다."),
 
-    INTERNAL_SERVER_ERROR(500, "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    INTERNAL_SERVER_ERROR(500, "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요."),
+
+    ALREADY_EXISTS_IDENTIFICATION(400, "존재하는 아이디입니다.");
 
     private final Integer code;
     private final String message;
