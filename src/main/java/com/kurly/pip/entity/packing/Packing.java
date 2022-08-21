@@ -26,15 +26,28 @@ public class Packing extends BaseEntity {
     @Column(columnDefinition = "bigint not null")
     private Long orderId;
 
-    @Column(columnDefinition = "bigint not null")
-    private Long boxId;
-
-    @Column(columnDefinition = "bigint not null")
-    private Long refrigerantId;
-
     @CreatedBy
     private Long createdBy;
 
     @LastModifiedBy
     private Long updatedBy;
+
+    public static Packing of(
+        Status status,
+        Long orderId
+    ) {
+        return new Packing(status, orderId);
+    }
+
+    private Packing(
+        Status status,
+        Long orderId
+    ) {
+        this.status = status;
+        this.orderId = orderId;
+    }
+
+    public void updateStatus(Status status) {
+        this.status = status;
+    }
 }
