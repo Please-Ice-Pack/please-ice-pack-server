@@ -39,7 +39,7 @@ jobs:
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: task-definition-pip-api-server.json
+          task-definition: aws ecs describe-task-definition --task-definition task-definition-pip-api-server --query taskDefinition > task-definition.json
           service: service-pip-api-server
           cluster: cluster-pip-api-server
           wait-for-service-stability: true
