@@ -60,8 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/v1/members/join").permitAll()
             .antMatchers("/api/v1/members/login").permitAll()
-            .antMatchers("/api/v1/members/check-nickname/**").permitAll()
-            .antMatchers("/api/v1/members/check-githubId/**").permitAll()
             .antMatchers("*").permitAll()
             .anyRequest().hasAnyAuthority(AUTHORITY_NAMES);
         http.cors().configurationSource(corsConfigurationSource());

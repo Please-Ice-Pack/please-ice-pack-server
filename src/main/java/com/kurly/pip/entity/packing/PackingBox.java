@@ -1,8 +1,7 @@
-package com.kurly.pip.entity.order;
+package com.kurly.pip.entity.packing;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import com.kurly.pip.entity.BaseEntity;
 
@@ -13,12 +12,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "orders")
-public class Order extends BaseEntity {
+public class PackingBox extends BaseEntity {
+    @Column(columnDefinition = "bigint not null")
+    private Long packingId;
 
+    //TODO: 박스 사이즈 확정되면 enum으로 관리
     @Column(columnDefinition = "varchar(20) not null")
-    private String customerName;
+    String size;
 
-    @Column(columnDefinition = "varchar(20) not null")
-    private String trackingNumber;
+    private Integer amount;
 }

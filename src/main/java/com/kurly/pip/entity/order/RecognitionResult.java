@@ -12,10 +12,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ImageResult extends BaseEntity {
+public class RecognitionResult extends BaseEntity {
 
     @Column(columnDefinition = "bigint not null")
     private Long orderId;
+
+    @Column(columnDefinition = "bigint not null")
+    private Long productId;
+
+    private Integer amount;
 
     private Boolean isMatched;
 }

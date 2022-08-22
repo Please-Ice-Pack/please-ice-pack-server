@@ -1,6 +1,5 @@
 package com.kurly.pip.entity.product;
 
-import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 
@@ -15,22 +14,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product extends BaseEntity {
 
-    @Column(columnDefinition = "varchar(255) not null")
-    String name;
+    private String name;
 
-    @Column(columnDefinition = "varchar(20) not null")
-    Integer volume;
+    private Integer volume;
 
-    @Column(columnDefinition = "varchar(20) not null")
-    Integer width;
+    private Integer width;
 
-    @Column(columnDefinition = "varchar(20) not null")
-    Integer length;
+    private Integer length;
 
-    @Column(columnDefinition = "varchar(20) not null")
-    Integer height;
+    private Integer height;
 
     @Convert(converter = ColdTypeConverter.class)
-    @Column(columnDefinition = "varchar(20) not null")
-    Integer coldType;
+    private ColdType coldType;
 }

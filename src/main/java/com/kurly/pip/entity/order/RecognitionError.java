@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ImageError extends BaseEntity {
+public class RecognitionError extends BaseEntity {
 
     @Column(columnDefinition = "bigint not null")
     private Long orderId;

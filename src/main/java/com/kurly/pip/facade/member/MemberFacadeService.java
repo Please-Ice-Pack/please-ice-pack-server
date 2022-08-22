@@ -2,6 +2,7 @@ package com.kurly.pip.facade.member;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kurly.pip.common.PipException;
 import com.kurly.pip.common.ResultCode;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberFacadeService {
 
     private final MemberService memberService;
@@ -45,7 +47,7 @@ public class MemberFacadeService {
             throw new PipException(ResultCode.NOT_FOUND);
         }
 
-        return LoginResponseDto.of(jwtService.encode(memberService.create(member).getId()));
+        return LoginResponseDto.of(jwtService.encode(member.getId()));
     }
 
 }
