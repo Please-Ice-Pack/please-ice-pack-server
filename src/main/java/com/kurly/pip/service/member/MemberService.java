@@ -15,30 +15,30 @@ import lombok.RequiredArgsConstructor;
 @Transactional(readOnly = true)
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+	private final MemberRepository memberRepository;
 
-    public Member findByIdOrThrow(Long id) {
+	public Member findByIdOrThrow(Long id) {
 
-        return memberRepository.findById(id)
-            .orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
-    }
+		return memberRepository.findById(id)
+			.orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
+	}
 
-    public Member findByIdentificationOrThrow(String identification) {
+	public Member findByIdentificationOrThrow(String identification) {
 
-        return memberRepository.findByIdentification(identification)
-            .orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
-    }
+		return memberRepository.findByIdentification(identification)
+			.orElseThrow(() -> new PipException(ResultCode.LOGIN_INFO_NOT_EXISTS));
+	}
 
-    public void validateIdentification(String identification) {
+	public void validateIdentification(String identification) {
 
-        if (memberRepository.existsByIdentification(identification)) {
-            throw new PipException(ResultCode.ALREADY_EXISTS_IDENTIFICATION);
-        }
-    }
+		if (memberRepository.existsByIdentification(identification)) {
+			throw new PipException(ResultCode.ALREADY_EXISTS_IDENTIFICATION);
+		}
+	}
 
-    @Transactional
-    public Member create(Member member) {
+	@Transactional
+	public Member create(Member member) {
 
-        return memberRepository.save(member);
-    }
+		return memberRepository.save(member);
+	}
 }
