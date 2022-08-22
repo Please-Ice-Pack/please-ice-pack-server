@@ -1,19 +1,26 @@
 package com.kurly.pip.dto.packing;
 
-import java.util.List;
+import com.kurly.pip.entity.packing.Packing;
+import com.kurly.pip.entity.packing.Status;
 
-import com.kurly.pip.dto.order.OrderProductResponseDto;
-import com.kurly.pip.dto.order.OrderResponseDto;
-import com.kurly.pip.dto.order.RecognitionResultResponseDto;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-import lombok.Value;
-
-@Value(staticConstructor = "of")
+@Getter
+@RequiredArgsConstructor
 public class PackingResponseDto {
 
-    OrderResponseDto orderInfo;
-    Boolean isMatched;
-    List<OrderProductResponseDto> orderDetails;
-    List<RecognitionResultResponseDto> recognitionResults;
-    RecommendedPackingOptionResponseDto recommendedPackingOption;
+	private final Long packingId;
+	private final Status status;
+	private final Boolean isMatched;
+	private final Long employee;
+
+	public static PackingResponseDto from(Packing packing) {
+		return new PackingResponseDto(
+			packing.getId(),
+			packing.getStatus(),
+			packing.getIsMatched(),
+			packing.getUpdatedBy()
+		);
+	}
 }
