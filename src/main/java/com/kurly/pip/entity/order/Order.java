@@ -21,7 +21,4 @@ public class Order extends BaseEntity {
 
     @Column(columnDefinition = "varchar(20) not null")
     private String trackingNumber;
-
-    @Column(columnDefinition = "varchar(255) not null")
-    private String imageLink;
 }

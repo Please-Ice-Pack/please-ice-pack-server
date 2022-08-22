@@ -1,5 +1,6 @@
 package com.kurly.pip.facade.product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,7 @@ public class ProductFacadeService {
                 .collect(Collectors.toList())
         );
 
-        List<OrderProductResponseDto> orderProductsResponse = null;
+        List<OrderProductResponseDto> orderProductsResponse = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
             orderProductsResponse.add(
                 OrderProductResponseDto.of(
@@ -54,7 +55,7 @@ public class ProductFacadeService {
                 .collect(Collectors.toList())
         );
 
-        List<RecognitionResultResponseDto> recognitionResultsResponse = null;
+        List<RecognitionResultResponseDto> recognitionResultsResponse = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
             recognitionResultsResponse.add(
                 RecognitionResultResponseDto.of(

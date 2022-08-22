@@ -20,7 +20,7 @@ public class PackingRefrigerant extends BaseEntity {
     private Long packingId;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(10) not null")
+    @Column(columnDefinition = "varchar(20) not null")
     private Type type;
 
     private Integer amount;
