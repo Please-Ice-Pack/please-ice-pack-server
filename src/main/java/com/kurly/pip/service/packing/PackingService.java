@@ -13,15 +13,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PackingService {
 
-    private final PackingRepository packingRepository;
+	private final PackingRepository packingRepository;
 
-    public Packing getByOrderIdOrThrow(Long orderId) {
+	public Packing getByIdOrThrow(Long packingId) {
 
-        return packingRepository.getByOrderId(orderId).orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
-    }
+		return packingRepository.findById(packingId).orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
+	}
 
-    public Packing create(Packing packing) {
+	public Packing getByOrderIdOrThrow(Long orderId) {
 
-        return packingRepository.save(packing);
-    }
+		return packingRepository.getByOrderId(orderId).orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
+	}
+
+	public Packing create(Packing packing) {
+
+		return packingRepository.save(packing);
+	}
 }
