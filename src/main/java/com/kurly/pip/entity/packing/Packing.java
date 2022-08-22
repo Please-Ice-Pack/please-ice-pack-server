@@ -23,6 +23,8 @@ public class Packing extends BaseEntity {
     @Column(columnDefinition = "varchar(10) not null")
     private Status status;
 
+    private Boolean isMatched;
+
     @Column(columnDefinition = "bigint not null")
     private Long orderId;
 
@@ -34,13 +36,15 @@ public class Packing extends BaseEntity {
 
     public static Packing of(
         Status status,
+        Boolean isMatched,
         Long orderId
     ) {
-        return new Packing(status, orderId);
+        return new Packing(status, isMatched, orderId);
     }
 
     private Packing(
         Status status,
+        Boolean isMatched,
         Long orderId
     ) {
         this.status = status;
