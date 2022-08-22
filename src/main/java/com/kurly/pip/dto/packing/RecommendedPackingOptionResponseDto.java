@@ -1,5 +1,7 @@
 package com.kurly.pip.dto.packing;
 
+import java.util.List;
+
 import com.kurly.pip.dto.box.BoxResponseDto;
 import com.kurly.pip.dto.refrigerant.RefrigerantResponseDto;
 
@@ -9,6 +11,5 @@ import lombok.Value;
 public class RecommendedPackingOptionResponseDto {
 
     private final BoxResponseDto box;
-    private final RefrigerantResponseDto icePack;
-    private final RefrigerantResponseDto dryIce;
+    private final List<RefrigerantResponseDto> refrigerants;
 }
