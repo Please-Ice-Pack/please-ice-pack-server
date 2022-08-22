@@ -57,7 +57,7 @@ public class PackingFacadeService {
 	private void checkPreProgressOrThrow(Packing packing) {
 
 		if (!packing.getStatus().equals(Status.PRE_PROGRESS)) {
-			throw new PipException(ResultCode.ALREADY_EXISTS_IDENTIFICATION);
+			throw new PipException(ResultCode.NOT_PRE_PROGRESS_STATUS);
 		}
 	}
 

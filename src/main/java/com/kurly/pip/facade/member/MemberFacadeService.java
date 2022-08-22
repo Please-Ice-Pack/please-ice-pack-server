@@ -22,32 +22,32 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class MemberFacadeService {
 
-    private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+	private final MemberService memberService;
+	private final PasswordEncoder passwordEncoder;
+	private final JwtService jwtService;
 
-    public JoinResponseDto join(JoinRequestDto dto) {
+	public JoinResponseDto join(JoinRequestDto dto) {
 
-        memberService.validateIdentification(dto.getIdentification());
+		memberService.validateIdentification(dto.getIdentification());
 
-        Member member = Member.of(
-            dto.getIdentification(),
-            passwordEncoder.encode(dto.getPassword()),
-            Role.MANAGER
-        );
+		Member member = Member.of(
+			dto.getIdentification(),
+			passwordEncoder.encode(dto.getPassword()),
+			Role.MANAGER
+		);
 
-        return JoinResponseDto.of(jwtService.encode(memberService.create(member).getId()));
-    }
+		return JoinResponseDto.of(jwtService.encode(memberService.create(member).getId()));
+	}
 
-    public LoginResponseDto login(LoginRequestDto dto) {
+	public LoginResponseDto login(LoginRequestDto dto) {
 
-        Member member = memberService.findByIdentificationOrThrow(dto.getIdentification());
+		Member member = memberService.findByIdentificationOrThrow(dto.getIdentification());
 
-        if (!passwordEncoder.matches(dto.getPassword(), member.getPassword())) {
-            throw new PipException(ResultCode.NOT_FOUND);
-        }
+		if (!passwordEncoder.matches(dto.getPassword(), member.getPassword())) {
+			throw new PipException(ResultCode.LOGIN_INFO_NOT_EXISTS);
+		}
 
-        return LoginResponseDto.of(jwtService.encode(member.getId()));
-    }
+		return LoginResponseDto.of(jwtService.encode(member.getId()));
+	}
 
 }

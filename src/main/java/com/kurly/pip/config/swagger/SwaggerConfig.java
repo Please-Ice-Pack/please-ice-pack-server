@@ -31,55 +31,55 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Slf4j
 class SwaggerConfig {
 
-    @Bean
-    public Docket apiDocket() {
-        return new Docket(DocumentationType.SWAGGER_2)
-            .groupName("Api Document")
-            .select()
-            .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-            .paths(PathSelectors.ant("/api/**"))
-            .build()
-            .useDefaultResponseMessages(false)
-            .apiInfo(apiInfo())
-            .directModelSubstitute(Pageable.class, SwaggerPageableRequest.class)
-            .securitySchemes(Collections.singletonList(apiKey()))
-            .securityContexts(Collections.singletonList(securityContext()));
-    }
+	@Bean
+	public Docket apiDocket() {
+		return new Docket(DocumentationType.SWAGGER_2)
+			.groupName("Api Document")
+			.select()
+			.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+			.paths(PathSelectors.ant("/api/**"))
+			.build()
+			.useDefaultResponseMessages(false)
+			.apiInfo(apiInfo())
+			.directModelSubstitute(Pageable.class, SwaggerPageableRequest.class)
+			.securitySchemes(Collections.singletonList(apiKey()))
+			.securityContexts(Collections.singletonList(securityContext()));
+	}
 
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-            .securityReferences(Collections.singletonList(securityReference()))
-            .build();
-    }
+	private SecurityContext securityContext() {
+		return SecurityContext.builder()
+			.securityReferences(Collections.singletonList(securityReference()))
+			.build();
+	}
 
-    private SecurityReference securityReference() {
-        return SecurityReference.builder()
-            .reference("Bearer {accessToken}")
-            .scopes(new AuthorizationScope[] {new AuthorizationScope("global", "access All")})
-            .build();
-    }
+	private SecurityReference securityReference() {
+		return SecurityReference.builder()
+			.reference("Bearer + JWT")
+			.scopes(new AuthorizationScope[] {new AuthorizationScope("global", "access All")})
+			.build();
+	}
 
-    private ApiKey apiKey() {
-        return new ApiKey("Bearer {accessToken}", "Authorization", "header");
-    }
+	private ApiKey apiKey() {
+		return new ApiKey("Bearer + JWT", "Authorization", "header");
+	}
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-            .title("PleaseIcePack API 문서")
-            .description(getMainDescription())
-            .build();
-    }
+	private ApiInfo apiInfo() {
+		return new ApiInfoBuilder()
+			.title("PleaseIcePack API 문서")
+			.description(getMainDescription())
+			.build();
+	}
 
-    private String getMainDescription() {
-        StringBuilder sb = new StringBuilder();
-        try {
-            ClassPathResource resource = new ClassPathResource("static/mainDescription.html");
-            Path path = Paths.get(resource.getURI());
-            List<String> content = Files.readAllLines(path);
-            content.forEach(sb::append);
-        } catch (IOException e) {
-            log.error("Main Description Error: {}", e.getMessage());
-        }
-        return sb.toString();
-    }
+	private String getMainDescription() {
+		StringBuilder sb = new StringBuilder();
+		try {
+			ClassPathResource resource = new ClassPathResource("static/mainDescription.html");
+			Path path = Paths.get(resource.getURI());
+			List<String> content = Files.readAllLines(path);
+			content.forEach(sb::append);
+		} catch (IOException e) {
+			log.error("Main Description Error: {}", e.getMessage());
+		}
+		return sb.toString();
+	}
 }
