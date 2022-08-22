@@ -11,7 +11,6 @@ jib {
         project.ext.encryptorPassword = encryptorPassword
         image = "470863998077.dkr.ecr.ap-northeast-2.amazonaws.com/pip-api-server"
         tags = ["${buildPhase}"]
-        println "to image : ${image}:${tags}"
     }
     container {
         String profile = "-Dspring.profiles.active=${buildPhase.toString()}"
