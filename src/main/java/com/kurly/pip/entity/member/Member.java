@@ -19,11 +19,11 @@ public class Member extends BaseEntity {
     @Column(columnDefinition = "varchar(20) not null")
     String identification;
 
-    @Column(columnDefinition = "varchar(20) not null")
+    @Column(columnDefinition = "varchar(200) not null")
     String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(10) not null")
+    @Column(columnDefinition = "varchar(20) not null")
     Role role;
 
     public static Member of(String identification, String password, Role role) {

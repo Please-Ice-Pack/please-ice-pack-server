@@ -20,10 +20,13 @@ import lombok.NoArgsConstructor;
 public class Packing extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(10) not null")
+    @Column(columnDefinition = "varchar(20) not null")
     private Status status;
 
     private Boolean isMatched;
+
+    @Column(columnDefinition = "varchar(255) not null")
+    private String imageLink;
 
     @Column(columnDefinition = "bigint not null")
     private Long orderId;
@@ -37,17 +40,21 @@ public class Packing extends BaseEntity {
     public static Packing of(
         Status status,
         Boolean isMatched,
+        String imageLink,
         Long orderId
     ) {
-        return new Packing(status, isMatched, orderId);
+        return new Packing(status, isMatched, imageLink, orderId);
     }
 
     private Packing(
         Status status,
         Boolean isMatched,
+        String imageLink,
         Long orderId
     ) {
         this.status = status;
+        this.isMatched = isMatched;
+        this.imageLink = imageLink;
         this.orderId = orderId;
     }
 
