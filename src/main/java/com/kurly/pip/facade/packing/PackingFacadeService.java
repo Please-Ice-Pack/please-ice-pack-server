@@ -43,7 +43,8 @@ public class PackingFacadeService {
 		Packing packing = packingService.getByOrderIdOrThrow(orderId);
 		checkPreProgressOrThrow(packing);
 
-		packing.updateStatus(Status.IN_PROGRESS);
+		//TODO: 프론트 요청 사항으로 업데이트를 잠시 막아놓습니다. 결과물에는 삭제 필요
+		// packing.updateStatus(Status.IN_PROGRESS);
 
 		return GetPackingResponseDto.of(
 			OrderResponseDto.from(order),
