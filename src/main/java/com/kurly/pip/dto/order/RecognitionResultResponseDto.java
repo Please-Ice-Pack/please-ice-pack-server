@@ -11,20 +11,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RecognitionResultResponseDto {
 
-    private final Long productId;
-    private final String productName;
-    private final Integer amount;
-    private final ColdType coldType;
-    private final Boolean isMatched;
+	private final Long productId;
+	private final String productName;
+	private final Integer amount;
+	private final ColdType coldType;
 
-    public static RecognitionResultResponseDto of(Product product, RecognitionResult recognitionResult) {
-        return new RecognitionResultResponseDto(
-            product.getId(),
-            product.getName(),
-            recognitionResult.getAmount(),
-            product.getColdType(),
-            recognitionResult.getIsMatched()
-        );
-    }
+	public static RecognitionResultResponseDto of(Product product, RecognitionResult recognitionResult) {
+		return new RecognitionResultResponseDto(
+			product.getId(),
+			product.getName(),
+			recognitionResult.getAmount(),
+			product.getColdType()
+		);
+	}
 
 }

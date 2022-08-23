@@ -14,13 +14,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecognitionResult extends BaseEntity {
 
-    @Column(columnDefinition = "bigint not null")
-    private Long orderId;
+	@Column(columnDefinition = "bigint not null")
+	private Long orderId;
 
-    @Column(columnDefinition = "bigint not null")
-    private Long productId;
+	@Column(columnDefinition = "bigint not null")
+	private Long productId;
 
-    private Integer amount;
-
-    private Boolean isMatched;
+	private Integer amount;
 }
