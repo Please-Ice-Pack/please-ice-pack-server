@@ -11,17 +11,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderProductResponseDto {
 
-    private final Long productId;
-    private final String productName;
-    private final Integer amount;
-    private final ColdType coldType;
+	private final Long productId;
+	private final String productName;
+	private final Integer amount;
+	private final ColdType coldType;
+	private final Boolean isMatched;
 
-    public static OrderProductResponseDto of(Product product, OrderProduct orderProduct) {
-        return new OrderProductResponseDto(
-            product.getId(),
-            product.getName(),
-            orderProduct.getAmount(),
-            product.getColdType()
-        );
-    }
+	public static OrderProductResponseDto of(Product product, OrderProduct orderProduct) {
+		return new OrderProductResponseDto(
+			product.getId(),
+			product.getName(),
+			orderProduct.getAmount(),
+			product.getColdType(),
+			orderProduct.getIsMatched()
+		);
+	}
 }
