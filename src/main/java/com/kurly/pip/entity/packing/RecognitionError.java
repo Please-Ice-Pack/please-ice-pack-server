@@ -1,4 +1,4 @@
-package com.kurly.pip.entity.order;
+package com.kurly.pip.entity.packing;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +14,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecognitionError extends BaseEntity {
 
-    @Column(columnDefinition = "bigint not null")
-    private Long orderId;
+	@Column(columnDefinition = "varchar(255) not null")
+	private String imageLink;
 
-    // TODO: 추후에 모델 디벨롭을 위해 어떤 데이터가 들어가야 할까(예: s3 url)
+	public static RecognitionError from(String imageLink) {
+		return new RecognitionError(imageLink);
+	}
+
+	private RecognitionError(String imageLink) {
+		this.imageLink = imageLink;
+	}
 }
