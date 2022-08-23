@@ -21,4 +21,6 @@ public class Order extends BaseEntity {
 
     @Column(columnDefinition = "varchar(20) not null")
     private String trackingNumber;
+
+    private Boolean checkPurpleBox;
 }
