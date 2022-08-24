@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 
 import com.kurly.pip.entity.BaseEntity;
 
+import com.kurly.pip.entity.packing.Packing;
+import com.kurly.pip.entity.packing.Status;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +23,22 @@ public class RecognitionResult extends BaseEntity {
 	private Long productId;
 
 	private Integer amount;
+
+	public static RecognitionResult of(
+			Long orderId,
+			Long productId,
+			Integer amount
+	) {
+		return new RecognitionResult(orderId, productId, amount);
+	}
+
+	private RecognitionResult(
+			Long orderId,
+			Long productId,
+			Integer amount
+	) {
+		this.orderId = orderId;
+		this.productId = productId;
+		this.amount = amount;
+	}
 }
