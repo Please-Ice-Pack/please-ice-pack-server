@@ -12,6 +12,10 @@
 - 상품을 매칭한 결과로 포장제 추천
 - 향후 AI 모델 정확도 향상을 위한 오류 데이터 적재
 
+### 📦 페이지
+
+![KakaoTalk_Image_2022-08-24-17-52-57](https://user-images.githubusercontent.com/66551410/186375256-258398a9-2d43-49cc-85f5-de4ce753818a.jpeg)
+
 ## 🔨 기술스택
 
 |                        Server                                |
@@ -46,6 +50,7 @@ http://13.125.81.111/swagger-ui/index.html
 ### ERD
 
 ![image](https://user-images.githubusercontent.com/66551410/186373432-8d756fb0-62bd-42cc-8e86-0dc5196aef5d.png)
+
 
 ## 💁‍♀️ Additional Repositories
 
