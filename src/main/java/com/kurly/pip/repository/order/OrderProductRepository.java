@@ -9,4 +9,6 @@ import com.kurly.pip.entity.order.OrderProduct;
 public interface OrderProductRepository extends JpaRepository<OrderProduct, Long> {
 
     List<OrderProduct> getAllByOrderId(Long orderId);
+
+    OrderProduct findByProductId(Long productId);
 }
