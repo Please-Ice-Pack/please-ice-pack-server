@@ -18,6 +18,7 @@ public class MLFeignService {
 	private final MLFeignClient mlFeignClient;
 
 	public MLResponseDto getRecognitionResults(MLRequestDto dto) {
+
 		return mlFeignClient.getRecognitionResults(dto);
 	}
 }

@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public class DetectResultsDto {
 
-	private Long productId;
-	private String productName;
-	private Integer amount;
-	private Integer cold_type;
+	Long productId;
+	String productName;
+	Integer amount;
+	Integer cold_type;
 }

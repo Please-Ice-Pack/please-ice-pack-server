@@ -8,6 +8,7 @@ import lombok.Getter;
 public class MLRequestDto {
 
 	private Long orderId;
+	private Boolean isPurpleBox;
 	private List<ProductRequestDto> products;
 	private String imageUrl;
 }

@@ -61,4 +61,8 @@ public class Packing extends BaseEntity {
     public void updateStatus(Status status) {
         this.status = status;
     }
+
+    public void updateIsMatched(Boolean isMatched) {
+        this.isMatched = isMatched;
+    }
 }

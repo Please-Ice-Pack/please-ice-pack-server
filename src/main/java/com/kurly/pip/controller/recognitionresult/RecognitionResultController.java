@@ -1,5 +1,6 @@
 package com.kurly.pip.controller.recognitionresult;
 
+import com.kurly.pip.service.order.RecognitionResultService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kurly.pip.common.ApiResponse;
 import com.kurly.pip.feign.ml.dto.MLRequestDto;
-import com.kurly.pip.service.recognitionresult.RecognitionResultService;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
