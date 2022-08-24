@@ -41,7 +41,7 @@ http://13.125.81.111/swagger-ui/index.html
 
 ### Server Architecture
 
-- 추가 예정
+![image](https://user-images.githubusercontent.com/66551410/186376975-881fb3bb-906d-45ec-9ebb-3ed02e9dede6.png)
 
 ### CICD Architecture
 
