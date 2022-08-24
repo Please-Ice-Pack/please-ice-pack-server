@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kurly.pip.common.ApiResponse;
 import com.kurly.pip.dto.recognitionerror.RecognitionErrorRequestDto;
 import com.kurly.pip.dto.recognitionerror.RecognitionErrorResponseDto;
 import com.kurly.pip.facade.recognitionerror.RecognitionErrorFacadeService;
@@ -21,8 +22,8 @@ public class RecognitionErrorController {
 
 	@ApiOperation("오류 데이터 저장 API")
 	@PostMapping
-	public RecognitionErrorResponseDto create(@RequestBody RecognitionErrorRequestDto dto) {
+	public ApiResponse<RecognitionErrorResponseDto> create(@RequestBody RecognitionErrorRequestDto dto) {
 
-		return recognitionErrorFacadeService.create(dto);
+		return ApiResponse.success(recognitionErrorFacadeService.create(dto));
 	}
 }
