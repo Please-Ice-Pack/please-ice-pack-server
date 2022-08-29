@@ -28,4 +28,30 @@ public class PackingBox extends BaseEntity {
 	String size;
 
 	private Integer amount;
+
+	public static PackingBox of(
+		Long packingId,
+		Type type,
+		String size,
+		Integer amount
+	) {
+		return new PackingBox(
+			packingId,
+			type,
+			size,
+			amount
+		);
+	}
+
+	private PackingBox(
+		Long packingId,
+		Type type,
+		String size,
+		Integer amount
+	) {
+		this.packingId = packingId;
+		this.type = type;
+		this.size = size;
+		this.amount = amount;
+	}
 }

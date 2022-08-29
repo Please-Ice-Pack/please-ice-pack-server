@@ -1,8 +1,13 @@
 package com.kurly.pip.feign.ml.dto;
 
+import com.kurly.pip.entity.refrigerant.Type;
+
+import lombok.Getter;
+
+@Getter
 public class Refrigerants {
 
-	String refrigerant_id;
-	Integer refrigerant_size;
+	Type refrigerant_type;
+	String refrigerant_size;
 	Integer refrigerant_amount;
 }

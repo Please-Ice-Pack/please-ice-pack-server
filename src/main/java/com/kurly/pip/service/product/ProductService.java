@@ -13,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductService {
 
-    private final ProductRepository productRepository;
+	private final ProductRepository productRepository;
 
-    public List<Product> getByIds(List<Long> ids) {
+	public List<Product> getByIds(List<Long> ids) {
 
-        return productRepository.findByIdIn(ids);
-    }
+		return productRepository.findByIdIn(ids);
+	}
 }
