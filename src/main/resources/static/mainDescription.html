@@ -1,5 +1,5 @@
 <h2>Error Codes</h2>
-<p>기본적으로 모든 응답은 200이며, 응답 코드에 따라 에러를 표시 <br/>
+<p>응답 코드에 따라 에러를 표시 <br/>
     상세한 코드 내용들을 각 API별로 내부에 표시
 </p>
 <table>
@@ -27,8 +27,20 @@
         <td>대상이 존재하지 않습니다.</td>
     </tr>
     <tr>
-        <td><strong>INTERNAL_SERVER_ERROR</strong></td>
-        <td>서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</td>
+        <td><strong>ALREADY_EXISTS_IDENTIFICATION</strong></td>
+        <td>존재하는 아이디입니다.</td>
+    </tr>
+    <tr>
+        <td><strong>LOGIN_INFO_NOT_EXISTS</strong></td>
+        <td>아이디 또는 패스워드가 일치하지 않습니다.</td>
+    </tr>
+    <tr>
+        <td><strong>LOGIN_INFO_NOT_EXISTS</strong></td>
+        <td>아이디 또는 패스워드가 일치하지 않습니다.</td>
+    </tr>
+    <tr>
+        <td><strong>NOT_PRE_PROGRESS_STATUS</strong></td>
+        <td>해당 주문건은 이미 처리중입니다.</td>
     </tr>
     </tbody>
 </table>

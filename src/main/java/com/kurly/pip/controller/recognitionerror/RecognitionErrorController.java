@@ -10,12 +10,14 @@ import com.kurly.pip.dto.recognitionerror.RecognitionErrorRequestDto;
 import com.kurly.pip.dto.recognitionerror.RecognitionErrorResponseDto;
 import com.kurly.pip.facade.recognitionerror.RecognitionErrorFacadeService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/v1/recognition-errors")
 @RequiredArgsConstructor
+@Api(tags = "인식 오류")
 public class RecognitionErrorController {
 
 	private final RecognitionErrorFacadeService recognitionErrorFacadeService;

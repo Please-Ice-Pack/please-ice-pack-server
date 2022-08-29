@@ -6,6 +6,6 @@ spring:
     password: ENC(XRRNvbFJ1IXQvSmA+Hc8pjXDiAf9IMheCyi0q/uGD5IzwkiNCA/KGiZv6/OndIsR6JMb5hD2JmH0Z+4d5b+P0Q==)
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 jwt:
   secretKey: ENC(ZQQ/q7MmzM2fgXhr2oFcgnRlnETS+jEWBgcSRD1xx50HFYrF+wVuMpu/6bj4QsN5)
