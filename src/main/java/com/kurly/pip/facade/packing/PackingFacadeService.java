@@ -30,13 +30,6 @@ public class PackingFacadeService {
 	private final ProductFacadeService productFacadeService;
 	private final RecommendFacadeService recommendFacadeService;
 
-    /*
-    작업자의 처리 되지 않은 패킹 데이터 조회
-     */
-
-	/*
-	주문 번호로 조회
-	*/
 	public GetPackingResponseDto getByOrderId(Long orderId) {
 
 		Order order = orderService.getByOrderId(orderId);
@@ -62,12 +55,10 @@ public class PackingFacadeService {
 		}
 	}
 
+	@Transactional(readOnly = false)
 	public PackingResponseDto updatePackingStatus(Long packingId, UpdatePackingStatusRequestDto dto) {
 
-		// TODO: 본인의 패킹 데이터만 수정하도록 변경
-
 		packingService.getByIdOrThrow(packingId).updateStatus(dto.getStatus());
-
 		return PackingResponseDto.from(packingService.getByOrderIdOrThrow(packingId));
 	}
 }

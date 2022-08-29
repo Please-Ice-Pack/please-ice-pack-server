@@ -37,7 +37,7 @@ public class RecognitionResultFacadeService {
 	private final PackingBoxService packingBoxService;
 	private final PackingRefrigerantService packingRefrigerantService;
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = false)
 	public String create(RecognitionResultRequestDto dto) {
 
 		MLRecognitionResultResponseDto mlRecognitionResultResponseDto = mlFeignService.getRecognitionResults(dto);

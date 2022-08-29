@@ -3,7 +3,6 @@ package com.kurly.pip.service.recognitionresult;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kurly.pip.common.PipException;
 import com.kurly.pip.common.ResultCode;
@@ -15,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class RecognitionResultService {
 
 	private final RecognitionResultRepository recognitionResultRepository;
@@ -33,8 +31,3 @@ public class RecognitionResultService {
 		return recognitionResultRepository.save(recognitionResult);
 	}
 }
-// Packing packing = packingRepository.getByOrderId(dto.getOrderId())
-// 	.orElseThrow(() -> new PipException(ResultCode.NOT_FOUND));
-// 	packing.updateIsMatched(ml.getOrderMatched());
-//
-// 		return "데이터가 저장되었습니다.";

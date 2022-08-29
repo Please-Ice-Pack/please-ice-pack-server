@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kurly.pip.dto.order.OrderProductResponseDto;
 import com.kurly.pip.dto.order.RecognitionResultResponseDto;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProductFacadeService {
 
 	private final OrderProductService orderProductService;
@@ -30,7 +32,7 @@ public class ProductFacadeService {
 		List<Product> products = productService.getByIds(
 			orderProducts
 				.stream()
-				.map(v -> v.getProductId())
+				.map(OrderProduct::getProductId)
 				.collect(Collectors.toList())
 		);
 

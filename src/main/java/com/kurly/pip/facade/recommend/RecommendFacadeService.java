@@ -3,6 +3,7 @@ package com.kurly.pip.facade.recommend;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kurly.pip.dto.box.BoxResponseDto;
 import com.kurly.pip.dto.packing.RecommendedPackingOptionResponseDto;
@@ -14,19 +15,20 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class RecommendFacadeService {
 
-    private final PackingBoxService packingBoxService;
-    private final PackingRefrigerantService packingRefrigerantService;
+	private final PackingBoxService packingBoxService;
+	private final PackingRefrigerantService packingRefrigerantService;
 
-    public RecommendedPackingOptionResponseDto getByPackingId(Long packingId) {
+	public RecommendedPackingOptionResponseDto getByPackingId(Long packingId) {
 
-        return RecommendedPackingOptionResponseDto.of(
-            BoxResponseDto.of(packingBoxService.getByPackingIdOrThrow(packingId)),
-            packingRefrigerantService.getAllByPackingId(packingId)
-                .stream()
-                .map(RefrigerantResponseDto::of)
-                .collect(Collectors.toList())
-        );
-    }
+		return RecommendedPackingOptionResponseDto.of(
+			BoxResponseDto.of(packingBoxService.getByPackingIdOrThrow(packingId)),
+			packingRefrigerantService.getAllByPackingId(packingId)
+				.stream()
+				.map(RefrigerantResponseDto::of)
+				.collect(Collectors.toList())
+		);
+	}
 }
