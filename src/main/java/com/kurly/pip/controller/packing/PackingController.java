@@ -13,12 +13,14 @@ import com.kurly.pip.dto.packing.PackingResponseDto;
 import com.kurly.pip.dto.packing.UpdatePackingStatusRequestDto;
 import com.kurly.pip.facade.packing.PackingFacadeService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/v1/packings")
 @RequiredArgsConstructor
+@Api(tags = "패킹")
 public class PackingController {
 
 	private final PackingFacadeService packingFacadeService;
