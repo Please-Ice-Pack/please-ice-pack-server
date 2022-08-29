@@ -1,11 +1,11 @@
 package com.kurly.pip.feign.ml.dto;
 
-import lombok.Getter;
-
 import java.util.List;
 
+import lombok.Getter;
+
 @Getter
-public class MLResponseDto {
+public class MLRecognitionResultResponseDto {
 
 	Long orderId;
 	List<OrderResultsDto> order_results;

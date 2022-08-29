@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Getter;
 
 @Getter
-public class MLRequestDto {
+public class RecognitionResultRequestDto {
 
 	private Long orderId;
 	private Boolean isPurpleBox;
