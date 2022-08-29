@@ -24,13 +24,27 @@ public class MemberController {
 
 	private final MemberFacadeService memberFacadeService;
 
-	@ApiOperation("회원가입")
+	@ApiOperation(
+		value = "회원가입",
+		notes =
+			"<h2> Error Code</h2>" +
+				"<p>" +
+				"ALREADY_EXISTS_IDENTIFICATION" +
+				"</p>"
+	)
 	@PostMapping("/join")
 	public ApiResponse<JoinResponseDto> join(@RequestBody JoinRequestDto dto) {
 		return ApiResponse.success(memberFacadeService.join(dto));
 	}
 
-	@ApiOperation("로그인")
+	@ApiOperation(
+		value = "로그인",
+		notes =
+			"<h2> Error Code</h2>" +
+				"<p>" +
+				"LOGIN_INFO_NOT_EXISTS" +
+				"</p>"
+	)
 	@PostMapping("/login")
 	public ApiResponse<LoginResponseDto> login(@RequestBody LoginRequestDto dto) {
 		return ApiResponse.success(memberFacadeService.login(dto));
