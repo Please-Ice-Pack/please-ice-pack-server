@@ -52,8 +52,9 @@ public class RecognitionResultFacadeService {
 			orderResult ->
 				orderProductService.findByOrderIdAndProductIdOrThrow(
 					orderId,
-					orderResult.getProductId()).updateIsMatched(orderResult.getIsMatched())
-		);
+					orderResult.getProductId()
+				).updateIsMatched(orderResult.getIsMatched()
+				));
 
 		detectResults.forEach(
 			detectResult ->

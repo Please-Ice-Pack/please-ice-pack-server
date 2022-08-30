@@ -9,7 +9,7 @@ import com.kurly.pip.config.feign.MLFeignClientConfig;
 import com.kurly.pip.feign.ml.dto.MLRecognitionResultRequestDto;
 import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto;
 
-@FeignClient(name = "mlFeignClient", url = "https://ml.pip-kurly.com", configuration = MLFeignClientConfig.class)
+@FeignClient(name = "mlFeignClient", url = "http://3.36.127.132", configuration = MLFeignClientConfig.class)
 public interface MLFeignClient {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/files/")
