@@ -24,7 +24,10 @@ public class RecommendFacadeService {
 	public RecommendedPackingOptionResponseDto getByPackingId(Long packingId) {
 
 		return RecommendedPackingOptionResponseDto.of(
-			BoxResponseDto.of(packingBoxService.getByPackingIdOrThrow(packingId)),
+			packingBoxService.getAllByPackingId(packingId)
+				.stream()
+				.map(BoxResponseDto::of)
+				.collect(Collectors.toList()),
 			packingRefrigerantService.getAllByPackingId(packingId)
 				.stream()
 				.map(RefrigerantResponseDto::of)

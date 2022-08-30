@@ -10,13 +10,14 @@ import com.kurly.pip.entity.packing.Packing;
 import com.kurly.pip.entity.packing.PackingBox;
 import com.kurly.pip.entity.packing.PackingRefrigerant;
 import com.kurly.pip.entity.packing.Status;
+import com.kurly.pip.entity.product.ColdType;
 import com.kurly.pip.feign.ml.MLFeignService;
-import com.kurly.pip.feign.ml.dto.DetectResultsDto;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultRequestDto;
 import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto;
-import com.kurly.pip.feign.ml.dto.OrderResultsDto;
-import com.kurly.pip.feign.ml.dto.RecognitionResultRequestDto;
-import com.kurly.pip.feign.ml.dto.RecommendedPackingOptionDto;
-import com.kurly.pip.feign.ml.dto.Refrigerants;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto.Boxes;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto.DetectResults;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto.OrderResults;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto.Refrigerants;
 import com.kurly.pip.service.order.OrderProductService;
 import com.kurly.pip.service.packing.PackingBoxService;
 import com.kurly.pip.service.packing.PackingRefrigerantService;
@@ -38,21 +39,22 @@ public class RecognitionResultFacadeService {
 	private final PackingRefrigerantService packingRefrigerantService;
 
 	@Transactional(readOnly = false)
-	public String create(RecognitionResultRequestDto dto) {
+	public String create(MLRecognitionResultRequestDto dto) {
 
 		MLRecognitionResultResponseDto mlRecognitionResultResponseDto = mlFeignService.getRecognitionResults(dto);
 		Long orderId = mlRecognitionResultResponseDto.getOrderId();
-		List<OrderResultsDto> orderResults = mlRecognitionResultResponseDto.getOrder_results();
-		List<DetectResultsDto> detectResults = mlRecognitionResultResponseDto.getDetect_results();
-		RecommendedPackingOptionDto recommendedPackingOptionDto = mlRecognitionResultResponseDto.getRecommendedPackingOption();
+		List<OrderResults> orderResults = mlRecognitionResultResponseDto.getOrder_results();
+		List<DetectResults> detectResults = mlRecognitionResultResponseDto.getDetect_results();
+		List<Boxes> recommendedPackingOptions = mlRecognitionResultResponseDto.getRecommendedPackingOption();
 		List<Refrigerants> refrigerants = mlRecognitionResultResponseDto.getRefrigerants();
 
 		orderResults.forEach(
 			orderResult ->
 				orderProductService.findByOrderIdAndProductIdOrThrow(
 					orderId,
-					orderResult.getProductId()).updateIsMatched(orderResult.getIsMatched())
-		);
+					orderResult.getProductId()
+				).updateIsMatched(orderResult.getIsMatched()
+				));
 
 		detectResults.forEach(
 			detectResult ->
@@ -73,12 +75,16 @@ public class RecognitionResultFacadeService {
 			)
 		);
 
-		packingBoxService.create(
-			PackingBox.of(
-				packing.getId(),
-				recommendedPackingOptionDto.getBox_type(),
-				recommendedPackingOptionDto.getBox_size(),
-				1)
+		recommendedPackingOptions.forEach(
+			box -> packingBoxService.create(
+				PackingBox.of(
+					packing.getId(),
+					box.getBox_type(),
+					box.getBox_size(),
+					1,
+					ColdType.ofFlag(box.getBox_flag())
+				)
+			)
 		);
 
 		refrigerants.forEach(
