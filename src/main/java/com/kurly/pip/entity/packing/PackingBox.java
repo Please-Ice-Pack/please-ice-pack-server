@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 
 import com.kurly.pip.entity.BaseEntity;
 import com.kurly.pip.entity.box.Type;
+import com.kurly.pip.entity.product.ColdType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -28,4 +29,38 @@ public class PackingBox extends BaseEntity {
 	String size;
 
 	private Integer amount;
+
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "varchar(20) null")
+	private ColdType coldType;
+
+	public static PackingBox of(
+		Long packingId,
+		Type type,
+		String size,
+		Integer amount,
+		ColdType coldType
+	) {
+		return new PackingBox(
+			packingId,
+			type,
+			size,
+			amount,
+			coldType
+		);
+	}
+
+	private PackingBox(
+		Long packingId,
+		Type type,
+		String size,
+		Integer amount,
+		ColdType coldType
+	) {
+		this.packingId = packingId;
+		this.type = type;
+		this.size = size;
+		this.amount = amount;
+		this.coldType = coldType;
+	}
 }

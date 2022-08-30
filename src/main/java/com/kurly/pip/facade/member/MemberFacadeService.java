@@ -26,6 +26,7 @@ public class MemberFacadeService {
 	private final PasswordEncoder passwordEncoder;
 	private final JwtService jwtService;
 
+	@Transactional(readOnly = false)
 	public JoinResponseDto join(JoinRequestDto dto) {
 
 		memberService.validateIdentification(dto.getIdentification());

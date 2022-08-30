@@ -13,10 +13,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PackingRefrigerantService {
 
-    private final PackingRefrigerantRepository packingRefrigerantRepository;
+	private final PackingRefrigerantRepository packingRefrigerantRepository;
 
-    public List<PackingRefrigerant> getAllByPackingId(Long packingId) {
+	public PackingRefrigerant create(PackingRefrigerant packingRefrigerant) {
 
-        return packingRefrigerantRepository.getAllByPackingId(packingId);
-    }
+		return packingRefrigerantRepository.save(packingRefrigerant);
+	}
+
+	public List<PackingRefrigerant> getAllByPackingId(Long packingId) {
+
+		return packingRefrigerantRepository.getAllByPackingId(packingId);
+	}
 }

@@ -17,10 +17,15 @@ public class RecognitionErrorFacadeService {
 
 	private final RecognitionErrorService recognitionErrorService;
 
+	@Transactional(readOnly = false)
 	public RecognitionErrorResponseDto create(RecognitionErrorRequestDto dto) {
 
 		return RecognitionErrorResponseDto.from(
-			recognitionErrorService.create(RecognitionError.from(dto.getImageLink()))
+			recognitionErrorService.create(
+				RecognitionError.from(
+					dto.getImageLink()
+				)
+			)
 		);
 	}
 }

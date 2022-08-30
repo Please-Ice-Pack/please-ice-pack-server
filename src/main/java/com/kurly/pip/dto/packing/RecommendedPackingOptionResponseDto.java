@@ -10,6 +10,6 @@ import lombok.Value;
 @Value(staticConstructor = "of")
 public class RecommendedPackingOptionResponseDto {
 
-    private final BoxResponseDto box;
-    private final List<RefrigerantResponseDto> refrigerants;
+	List<BoxResponseDto> box;
+	List<RefrigerantResponseDto> refrigerants;
 }
