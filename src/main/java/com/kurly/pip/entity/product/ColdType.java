@@ -9,26 +9,37 @@ import lombok.Getter;
 
 @Getter
 public enum ColdType {
-    NORMAL("상온", 0),
-    REFRIGERATED("냉장", 1),
-    FROZEN("냉동", 2);
+	NORMAL("상온", 0, "PUR"),
+	REFRIGERATED("냉장", 1, "REF"),
+	FROZEN("냉동", 2, "FRE");
 
-    private String desc;
-    private Integer code;
+	private final String desc;
+	private final Integer code;
+	private final String flag;
 
-    ColdType(
-        String desc,
-        Integer code
-    ) {
-        this.desc = desc;
-        this.code = code;
-    }
+	ColdType(
+		String desc,
+		Integer code,
+		String flag
+	) {
+		this.desc = desc;
+		this.code = code;
+		this.flag = flag;
+	}
 
-    public static ColdType ofCode(Integer code) {
+	public static ColdType ofCode(Integer code) {
 
-        return Arrays.stream(ColdType.values())
-            .filter(v -> v.getCode().equals(code))
-            .findAny()
-            .orElseThrow(() -> new PipException(ResultCode.INTERNAL_SERVER_ERROR));
-    }
+		return Arrays.stream(ColdType.values())
+			.filter(v -> v.getCode().equals(code))
+			.findAny()
+			.orElseThrow(() -> new PipException(ResultCode.INTERNAL_SERVER_ERROR));
+	}
+
+	public static ColdType ofFlag(String flag) {
+
+		return Arrays.stream(ColdType.values())
+			.filter(v -> v.getFlag().equals(flag))
+			.findAny()
+			.orElseThrow(() -> new PipException(ResultCode.INTERNAL_SERVER_ERROR));
+	}
 }

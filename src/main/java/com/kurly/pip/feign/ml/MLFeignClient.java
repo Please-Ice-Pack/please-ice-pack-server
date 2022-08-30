@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kurly.pip.config.feign.MLFeignClientConfig;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultRequestDto;
 import com.kurly.pip.feign.ml.dto.MLRecognitionResultResponseDto;
-import com.kurly.pip.feign.ml.dto.RecognitionResultRequestDto;
 
 @FeignClient(name = "mlFeignClient", url = "https://ml.pip-kurly.com", configuration = MLFeignClientConfig.class)
 public interface MLFeignClient {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/files/")
-	MLRecognitionResultResponseDto getRecognitionResults(@RequestBody RecognitionResultRequestDto dto);
+	MLRecognitionResultResponseDto getRecognitionResults(@RequestBody MLRecognitionResultRequestDto dto);
 }

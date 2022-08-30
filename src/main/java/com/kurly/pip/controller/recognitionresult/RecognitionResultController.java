@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kurly.pip.common.ApiResponse;
 import com.kurly.pip.facade.recognitionresult.RecognitionResultFacadeService;
-import com.kurly.pip.feign.ml.dto.RecognitionResultRequestDto;
+import com.kurly.pip.feign.ml.dto.MLRecognitionResultRequestDto;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +23,7 @@ public class RecognitionResultController {
 
 	@ApiOperation("인식 결과 데이터 저장 API")
 	@PostMapping
-	public ApiResponse<String> create(@RequestBody RecognitionResultRequestDto dto) {
+	public ApiResponse<String> create(@RequestBody MLRecognitionResultRequestDto dto) {
 
 		return ApiResponse.success(recognitionResultFacadeService.create(dto));
 	}
