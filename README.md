@@ -31,11 +31,17 @@
 - Jasypt  
   프로퍼티 암호화를 위해 사용하였습니다.
 
-## 🛠 DEV Server
-https://api.pip-kurly.com/
+## 🛠 DEV API Server
+https://api.pip-kurly.com/ping
 
-## 💚 Swagger
+## 💚 API Server Swagger
 https://api.pip-kurly.com/swagger-ui/index.html
+
+## 🛠 DEV ML Server
+https://ml.pip-kurly.com/
+
+## 💚 ML Server Swagger
+https://ml.pip-kurly.com/docs
 
 ## 🕍 아키텍쳐
 
