@@ -52,7 +52,7 @@ https://api.pip-kurly.com/swagger-ui/index.html
 ![image](https://user-images.githubusercontent.com/66551410/186373432-8d756fb0-62bd-42cc-8e86-0dc5196aef5d.png)
 
 
-## 💁‍♀️ Additional Repositories
+## ⭐️ Additional Repositories
 
 - [Web](https://github.com/Please-Ice-Pack/please-ice-pack-front)
 - [ML](https://github.com/Please-Ice-Pack/please-ice-pack-ml)
